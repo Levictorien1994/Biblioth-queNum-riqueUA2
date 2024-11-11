@@ -7,7 +7,7 @@ import user from './routes/user.js'
 const app = express();
 
 // Définir un port (par exemple 3000)
-const PORT = 5004;
+const PORT = 5005;
 
 // Définir une route de base
 app.get('/', (req, res) => {
