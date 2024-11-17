@@ -1,25 +1,14 @@
-// Importer le module Express en utilisant `import`
 import express from 'express';
-import user from './routes/user.js'
+import livreRoutes from '../routes/LivreRoutes.js';
 
-
-// Créer une instance de l'application Express
 const app = express();
 
-// Définir un port (par exemple 3000)
-const PORT = 5005;
+app.use(express.json()); // Middleware pour les requêtes JSON
 
-// Définir une route de base
-app.get('/', (req, res) => {
-    res.json({
-       message:"biencenue sur notre API en node js"
-    });
-});
-app.use("/user", user);
+// Routes
+app.use('/api/livres', livreRoutes);
 
-
-
-// Démarrer le serveur
+const PORT = 3000;
 app.listen(PORT, () => {
-    console.log(`Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`Serveur démarré sur le port ${PORT}`);
 });
