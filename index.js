@@ -1,11 +1,11 @@
 import express from 'express';
-import livreRoutes from '../routes/LivreRoutes.js';
+import livreRoutes from './routes/LivreRoutes.js';
 
 const app = express();
 
-app.use(express.json()); // Middleware pour les requêtes JSON
+app.use(express.json()); // Middleware pour analyser les JSON
 
-// Routes
+// Routes pour les livres
 app.use('/api/livres', livreRoutes);
 
 const PORT = 3000;
