@@ -7,7 +7,7 @@ export const getAllLivres = (req, res) => {
 
 // Ajouter un nouveau livre
 export const createLivre = (req, res) => {
-  const newLivre = { id: LivresMock.length + 1, ...req.body };
+  const newLivre = { livre_id: LivresMock.length + 1, ...req.body };
   LivresMock.push(newLivre);
   res.status(201).json(newLivre);
 };
@@ -15,7 +15,7 @@ export const createLivre = (req, res) => {
 // Modifier un livre existant
 export const updateLivre = (req, res) => {
   const { id } = req.params;
-  const livreIndex = LivresMock.findIndex((livre) => livre.id === parseInt(id));
+  const livreIndex = LivresMock.findIndex((livre) => livre.livre_id === parseInt(id));
   if (livreIndex === -1) {
     return res.status(404).json({ error: 'Livre non trouvé' });
   }
@@ -26,7 +26,7 @@ export const updateLivre = (req, res) => {
 // Supprimer un livre
 export const deleteLivre = (req, res) => {
   const { id } = req.params;
-  const livreIndex = LivresMock.findIndex((livre) => livre.id === parseInt(id));
+  const livreIndex = LivresMock.findIndex((livre) => livre.livre_id === parseInt(id));
   if (livreIndex === -1) {
     return res.status(404).json({ error: 'Livre non trouvé' });
   }

@@ -1,4 +1,5 @@
 import CategoriesMock from '../data/CategoriesMock.js';
+import LivresMock from '../data/LivresMock.js';
 
 
 // Récupérer toutes les catégories
@@ -35,16 +36,16 @@ export const deleteCategorie = (req, res) => {
   res.status(200).json({ message: 'Catégorie supprimée' });
 };
 
-import LivresMock from '../data/LivresMock.js';
+
 
 // Récupérer les livres d'une catégorie
+
 export const getLivresByCategorie = (req, res) => {
   const { id } = req.params;
-  const categorie = CategoriesMock.find((categorie) => categorie.id === parseInt(id));
+  const categorie = CategoriesMock.find((categorie) => categorie.categorie_id === parseInt(id));
   if (!categorie) {
     return res.status(404).json({ error: 'Catégorie non trouvée' });
   }
-  const livres = LivresMock.filter((livre) => livre.categorieId === parseInt(id));
+  const livres = LivresMock.filter((livre) => livre.categorie_id === parseInt(id));
   res.status(200).json(livres);
 };
-
