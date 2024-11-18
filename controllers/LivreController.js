@@ -33,3 +33,48 @@ export const deleteLivre = (req, res) => {
   LivresMock.splice(livreIndex, 1);
   res.status(200).json({ message: 'Livre supprimé' });
 };
+export const getFilteredLivres = (req, res) => {
+  const { auteur_id, categorie_id, date_publication, titre, page = 1, limit = 10 } = req.query;
+
+  let filteredLivres = LivresMock;
+
+  // Filtrer par auteur_id
+  if (auteur_id) {
+    filteredLivres = filteredLivres.filter(
+      (livre) => livre.auteur_id === parseInt(auteur_id)
+    );
+  }
+
+  // Filtrer par categorie_id
+  if (categorie_id) {
+    filteredLivres = filteredLivres.filter(
+      (livre) => livre.categorie_id === parseInt(categorie_id)
+    );
+  }
+
+  // Filtrer par date_publication
+  if (date_publication) {
+    filteredLivres = filteredLivres.filter(
+      (livre) => livre.date_publication === date_publication
+    );
+  }
+
+  // Filtrer par titre (recherche partielle)
+  if (titre) {
+    filteredLivres = filteredLivres.filter((livre) =>
+      livre.titre.toLowerCase().includes(titre.toLowerCase())
+    );
+  }
+
+  // Pagination
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const paginatedLivres = filteredLivres.slice(startIndex, endIndex);
+
+  res.status(200).json({
+    total: filteredLivres.length,
+    page: parseInt(page),
+    limit: parseInt(limit),
+    data: paginatedLivres,
+  });
+};

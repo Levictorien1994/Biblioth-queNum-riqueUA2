@@ -57,3 +57,41 @@ export const deleteEmprunt = (req, res) => {
   EmpruntsMock.splice(empruntIndex, 1);
   res.status(200).json({ message: 'Emprunt supprimé' });
 };
+export const getFilteredEmprunts = (req, res) => {
+    const { membre_id, livre_id, retourne, page = 1, limit = 10 } = req.query;
+  
+    let filteredEmprunts = EmpruntsMock;
+  
+    // Filtrer par membre_id
+    if (membre_id) {
+      filteredEmprunts = filteredEmprunts.filter(
+        (emprunt) => emprunt.membre_id === parseInt(membre_id)
+      );
+    }
+  
+    // Filtrer par livre_id
+    if (livre_id) {
+      filteredEmprunts = filteredEmprunts.filter(
+        (emprunt) => emprunt.livre_id === parseInt(livre_id)
+      );
+    }
+  
+    // Filtrer par retourne
+    if (retourne) {
+      filteredEmprunts = filteredEmprunts.filter(
+        (emprunt) => emprunt.retourne === (retourne === 'true')
+      );
+    }
+  
+    // Pagination
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const paginatedEmprunts = filteredEmprunts.slice(startIndex, endIndex);
+  
+    res.status(200).json({
+      total: filteredEmprunts.length,
+      page: parseInt(page),
+      limit: parseInt(limit),
+      data: paginatedEmprunts,
+    });
+  };
