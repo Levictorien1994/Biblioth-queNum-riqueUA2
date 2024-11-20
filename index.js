@@ -6,6 +6,9 @@ import empruntRoutes from './routes/EmpruntRoutes.js';
 import membreRoutes from './routes/MembreRoutes.js';
 import reservationRoutes from './routes/ReservationRoutes.js';
 import avisRoutes from './routes/AvisRoutes.js';
+import roleRoutes from './routes/RoleRoutes.js';
+import utilisateurRoutes from './routes/UtilisateurRoutes.js';
+import paiementRoutes from './routes/PaiementRoutes.js';
 import sequelize from './config/database.js';
 import './models/relation.js';
 
@@ -24,6 +27,10 @@ app.use('/api/emprunts', empruntRoutes);
 app.use('/api/membres', membreRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/avis', avisRoutes);
+app.use('/api/roles', roleRoutes);
+app.use('/api/utilisateurs', utilisateurRoutes);
+app.use('/api/paiements', paiementRoutes);
+
 (async () => {
   try {
     await sequelize.sync({ force: false}); // Mettre "true" pour recréer les tables

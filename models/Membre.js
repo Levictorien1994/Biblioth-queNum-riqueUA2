@@ -18,12 +18,10 @@ const Membre = sequelize.define('Membre', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
   },
-  mot_de_passe: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
+}, {
+  tableName: 'membres',
+  timestamps: true,
 });
 
 export default Membre;
