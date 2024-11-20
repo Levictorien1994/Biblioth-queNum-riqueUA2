@@ -7,15 +7,7 @@ const Utilisateur = sequelize.define('Utilisateur', {
     primaryKey: true,
     autoIncrement: true,
   },
-  nom: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  prenom: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
+  nom_utilisateur: {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,

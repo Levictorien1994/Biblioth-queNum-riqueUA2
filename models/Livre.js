@@ -11,21 +11,17 @@ const Livre = sequelize.define('Livre', {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  auteur_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
+  description: {
+    type: DataTypes.TEXT,
+    allowNull: true,
   },
   categorie_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  date_publication: {
-    type: DataTypes.DATEONLY,
-    allowNull: true,
-  },
-  isbn: {
-    type: DataTypes.STRING,
-    allowNull: true,
+  auteur_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
   },
 });
 

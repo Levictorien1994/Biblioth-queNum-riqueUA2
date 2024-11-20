@@ -7,20 +7,20 @@ const Emprunt = sequelize.define('Emprunt', {
     primaryKey: true,
     autoIncrement: true,
   },
-  livre_id: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
   membre_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
+  livre_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
   date_emprunt: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   date_retour: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: true,
   },
 });
