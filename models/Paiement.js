@@ -19,9 +19,6 @@ const Paiement = sequelize.define('Paiement', {
     type: DataTypes.DATE,
     allowNull: false,
   },
-}, {
-  tableName: 'paiements',
-  timestamps: true,
 });
 
 export default Paiement;

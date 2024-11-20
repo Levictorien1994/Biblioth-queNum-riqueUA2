@@ -13,15 +13,13 @@ const Membre = sequelize.define('Membre', {
   },
   prenom: {
     type: DataTypes.STRING,
-    allowNull: false,
+    allowNull: true,
   },
   email: {
     type: DataTypes.STRING,
     allowNull: false,
+    unique: true,
   },
-}, {
-  tableName: 'membres',
-  timestamps: true,
 });
 
 export default Membre;
