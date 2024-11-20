@@ -1,32 +1,24 @@
 import { DataTypes } from 'sequelize';
 import sequelize from '../config/database.js';
 
-const Livre = sequelize.define('Livre', {
-  livre_id: {
+const Reservation = sequelize.define('Reservation', {
+  reservation_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
   },
-  titre: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  auteur_id: {
+  livre_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  categorie_id: {
+  membre_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
-  date_publication: {
+  date_reservation: {
     type: DataTypes.DATEONLY,
-    allowNull: true,
-  },
-  isbn: {
-    type: DataTypes.STRING,
-    allowNull: true,
+    allowNull: false,
   },
 });
 
-export default Livre;
+export default Reservation;
