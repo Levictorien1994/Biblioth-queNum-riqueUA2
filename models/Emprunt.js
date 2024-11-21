@@ -7,7 +7,7 @@ const Emprunt = sequelize.define('Emprunt', {
     primaryKey: true,
     autoIncrement: true,
   },
-  membre_id: {
+  utilisateur_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },

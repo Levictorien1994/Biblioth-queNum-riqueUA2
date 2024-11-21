@@ -7,7 +7,7 @@ const Paiement = sequelize.define('Paiement', {
     primaryKey: true,
     autoIncrement: true,
   },
-  membre_id: {
+  utilisateur_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
