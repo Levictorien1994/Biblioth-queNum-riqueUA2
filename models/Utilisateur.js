@@ -10,7 +10,7 @@ const Utilisateur = sequelize.define('Utilisateur', {
   nom_utilisateur: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
+    
   },
   mot_de_passe: {
     type: DataTypes.STRING,
