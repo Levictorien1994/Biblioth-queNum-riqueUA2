@@ -7,7 +7,7 @@ const Reservation = sequelize.define('Reservation', {
     primaryKey: true,
     autoIncrement: true,
   },
-  membre_id: {
+  utilisateur_id: {
     type: DataTypes.INTEGER,
     allowNull: false,
   },
