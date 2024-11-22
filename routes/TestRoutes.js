@@ -6,6 +6,7 @@ import Reservation from '../models/Reservation.js';
 import Emprunt from '../models/Emprunt.js';
 import Avis from '../models/Avis.js';
 import Categorie from '../models/Categorie.js';
+import { authenticateToken, authorizeRole } from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 

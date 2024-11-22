@@ -1,4 +1,5 @@
 import express from 'express';
+import { authenticateToken, authorizeRole } from '../middlewares/authMiddleware.js';
 import {
   getAllCategories,
   getCategorieById,
