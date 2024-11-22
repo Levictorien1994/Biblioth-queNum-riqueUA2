@@ -18,8 +18,8 @@ const router = express.Router();
 router.get('/:id',authenticateToken, getLivreById);
 
 router.get('/', authenticateToken, getAllLivres); // Accessible à tous les utilisateurs connectés
-router.post('/', authenticateToken, authorizeRole(['Administrateur', 'Auteur']), validateLivre, createLivre);
-router.put('/:id', authenticateToken, authorizeRole(['Administrateur', 'Auteur']), validateLivre, updateLivre);
+router.post('/', authenticateToken,authorizeRole(['Auteur','SuperAdmin','Administrateur']), validateLivre, createLivre);
+router.put('/:id', authenticateToken, authorizeRole(['Administrateur','SuperAdmin', 'Auteur']), validateLivre, updateLivre);
 router.delete('/:id', authenticateToken, authorizeRole(['Administrateur']), deleteLivre);
 
 export default router;
