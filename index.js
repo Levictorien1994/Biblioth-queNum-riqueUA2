@@ -11,6 +11,7 @@ import roleRoutes from './routes/RoleRoutes.js';
 import livreRoutes from './routes/livreRoutes.js';
 import avisRoutes from './routes/AvisRoutes.js';
 import categorieRoutes  from './routes/CategorieRoutes.js';
+import testRoutes from './routes/TestRoutes.js';
 import cors from 'cors';
 import helmet from 'helmet';
 import compression from 'compression';
@@ -42,6 +43,7 @@ app.use('/api/roles', roleRoutes);
 app.use('/api/livres', livreRoutes);
 app.use('/api/avis', avisRoutes);
 app.use('/api/categories', categorieRoutes);
+app.use('/api/tests', testRoutes);
 
 const PORT = 3000;
 

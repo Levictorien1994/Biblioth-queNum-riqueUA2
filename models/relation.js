@@ -16,6 +16,7 @@ Livre.belongsTo(Auteur, { foreignKey: 'auteur_id' });
 Categorie.hasMany(Livre, { foreignKey: 'categorie_id' });
 Livre.belongsTo(Categorie, { foreignKey: 'categorie_id' });
 
+
 Livre.hasMany(Emprunt, { foreignKey: 'livre_id' });
 Emprunt.belongsTo(Livre, { foreignKey: 'livre_id' });
 
