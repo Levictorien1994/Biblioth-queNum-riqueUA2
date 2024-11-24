@@ -1,5 +1,6 @@
 import express from 'express';
 import { validateUtilisateur, validateLoginUtilisateur } from '../middlewares/validationMiddleware.js';
+import{authenticateToken,authorizeRole} from '../middlewares/authMiddleware.js'
 import {
   getAllUtilisateurs,
   getUtilisateurById,
