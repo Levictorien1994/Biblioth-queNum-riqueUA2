@@ -11,10 +11,10 @@ import {
 
 const router = express.Router();
 
-router.get('/', getAllCategories);
-router.get('/:id', getCategorieById);
-router.post('/',validateCategorie,authenticateToken, createCategorie);
-router.put('/:id',validateCategorie,authorizeRole(['SuperAdmin']), updateCategorie);
-router.delete('/:id', validateCategorie,authorizeRole(['SuperAdmin','Administrateur']), deleteCategorie);
+router.get('/', authenticateToken, getAllCategories);
+router.get('/:id', authenticateToken, getCategorieById);
+router.post('/', validateCategorie, authorizeRole(['SuperAdmin']), authenticateToken, createCategorie);
+router.put('/:id', validateCategorie, authorizeRole(['SuperAdmin']), authenticateToken, updateCategorie);
+router.delete('/:id', validateCategorie, authorizeRole(['SuperAdmin', 'Administrateur']), authenticateToken, deleteCategorie);
 
 export default router;

@@ -11,10 +11,10 @@ import {
 
 const router = express.Router();
 
-router.get('/', getAllAvis);
-router.get('/:id', getAvisById);
-router.post('/',validateAvis,authenticateToken, createAvis);
-router.put('/:id',validateAvis,authenticateToken, updateAvis);
-router.delete('/:id',validateAvis,authenticateToken,authorizeRole(['SuperAdmin','Administrateur']), deleteAvis);
+router.get('/', authenticateToken, getAllAvis);
+router.get('/:id', authenticateToken, getAvisById);
+router.post('/', validateAvis, authenticateToken, createAvis);
+router.put('/:id', validateAvis, authenticateToken, updateAvis);
+router.delete('/:id', validateAvis, authenticateToken, authorizeRole(['SuperAdmin', 'Administrateur']), deleteAvis);
 
 export default router;
