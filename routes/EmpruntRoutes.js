@@ -1,5 +1,6 @@
 import express from 'express';
 import { authenticateToken, authorizeRole } from '../middlewares/authMiddleware.js';
+import { validateEmprunt } from '../middlewares/validationMiddleware.js';
 import {
   getAllEmprunts,
   getEmpruntById,
@@ -11,10 +12,10 @@ import {
 const router = express.Router();
 
 // Routes
-router.get('/', getAllEmprunts); // Obtenir tous les emprunts
+router.get('/',authenticateToken, getAllEmprunts); // Obtenir tous les emprunts
 router.get('/:id', getEmpruntById); // Obtenir un emprunt par ID
-router.post('/', createEmprunt); // Ajouter un emprunt
-router.put('/:id', updateEmprunt); // Mettre à jour un emprunt
-router.delete('/:id', deleteEmprunt); // Supprimer un emprunt
+router.post('/',validateEmprunt,authenticateToken,createEmprunt); // Ajouter un emprunt
+router.put('/:id',validateEmprunt,authenticateToken, updateEmprunt); // Mettre à jour un emprunt
+router.delete('/:id',authenticateToken,authorizeRole(['SuperAdmin','Administrateur']), deleteEmprunt); // Supprimer un emprunt
 
 export default router;

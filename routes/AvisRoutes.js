@@ -1,5 +1,6 @@
 import express from 'express';
 import { authenticateToken, authorizeRole } from '../middlewares/authMiddleware.js';
+import { validateAvis } from '../middlewares/validationMiddleware.js';
 import {
   getAllAvis,
   getAvisById,
@@ -12,8 +13,8 @@ const router = express.Router();
 
 router.get('/', getAllAvis);
 router.get('/:id', getAvisById);
-router.post('/', createAvis);
-router.put('/:id', updateAvis);
-router.delete('/:id', deleteAvis);
+router.post('/',validateAvis,authenticateToken, createAvis);
+router.put('/:id',validateAvis,authenticateToken, updateAvis);
+router.delete('/:id',validateAvis,authenticateToken,authorizeRole(['SuperAdmin','Administrateur']), deleteAvis);
 
 export default router;

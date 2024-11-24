@@ -1,5 +1,7 @@
 import express from 'express';
 import { authenticateToken, authorizeRole } from '../middlewares/authMiddleware.js';
+import {  validatePaiement } from '../middlewares/validationMiddleware.js';
+
 import {
   getAllPaiements,
   getPaiementById,
@@ -11,10 +13,10 @@ import {
 const router = express.Router();
 
 // Routes
-router.get('/', getAllPaiements); // Obtenir tous les paiements
-router.get('/:id', getPaiementById); // Obtenir un paiement par ID
-router.post('/', createPaiement); // Ajouter un paiement
-router.put('/:id', updatePaiement); // Mettre à jour un paiement
-router.delete('/:id', deletePaiement); // Supprimer un paiement
+router.get('/',validatePaiement,authenticateToken,authorizeRole(['Administrateur','SuperAdmin']), getAllPaiements); // Obtenir tous les paiements
+router.get('/:id',validatePaiement,authorizeRole(['Administrateur','SuperAdmin']), getPaiementById); // Obtenir un paiement par ID
+router.post('/',validatePaiement,authenticateToken, createPaiement); // Ajouter un paiement
+router.put('/:id',validatePaiement,authenticateToken, updatePaiement); // Mettre à jour un paiement
+router.delete('/:id',validatePaiement,authorizeRole(['Administrateur','SuperAdmin']),authenticateToken ,deletePaiement); // Supprimer un paiement
 
 export default router;
