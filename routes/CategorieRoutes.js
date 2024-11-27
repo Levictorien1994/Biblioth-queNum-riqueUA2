@@ -13,8 +13,8 @@ const router = express.Router();
 
 router.get('/', authenticateToken, getAllCategories);
 router.get('/:id', authenticateToken, getCategorieById);
-router.post('/', validateCategorie, authorizeRole(['SuperAdmin']), authenticateToken, createCategorie);
-router.put('/:id', validateCategorie, authorizeRole(['SuperAdmin']), authenticateToken, updateCategorie);
-router.delete('/:id', validateCategorie, authorizeRole(['SuperAdmin', 'Administrateur']), authenticateToken, deleteCategorie);
+router.post('/', validateCategorie,authenticateToken, authorizeRole(['SuperAdmin']),  createCategorie);
+router.put('/:id', validateCategorie,authenticateToken, authorizeRole(['SuperAdmin']),  updateCategorie);
+router.delete('/:id', validateCategorie,authenticateToken, authorizeRole(['SuperAdmin', 'Administrateur']),  deleteCategorie);
 
 export default router;

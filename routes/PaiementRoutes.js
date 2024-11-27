@@ -14,9 +14,9 @@ const router = express.Router();
 
 // Routes
 router.get('/', authenticateToken, authorizeRole(['Administrateur', 'SuperAdmin']), getAllPaiements); // Obtenir tous les paiements
-router.get('/:id', authorizeRole(['Administrateur', 'SuperAdmin']), getPaiementById); // Obtenir un paiement par ID
+router.get('/:id',authenticateToken, authorizeRole(['Administrateur', 'SuperAdmin']), getPaiementById); // Obtenir un paiement par ID
 router.post('/', validatePaiement, authenticateToken, createPaiement); // Ajouter un paiement
-router.put('/:id', validatePaiement, authenticateToken, updatePaiement); // Mettre à jour un paiement
-router.delete('/:id', authorizeRole(['Administrateur', 'SuperAdmin']), authenticateToken, deletePaiement); // Supprimer un paiement
+router.put('/:id', validatePaiement,  updatePaiement); // Mettre à jour un paiement
+router.delete('/:id',authenticateToken, authorizeRole(['Administrateur', 'SuperAdmin']),  deletePaiement); // Supprimer un paiement
 
 export default router;
